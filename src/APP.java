@@ -2,9 +2,9 @@ import java.util.*;
 
 public class APP {
     public static void main(String[] args) {
-        //10개의 결과값 저장하는 배열 생성 및 배열 조회를 위한 index변수 생성
-        int[] resultArray = new int[10];
-        int index = 0;
+        //arraylist로 바꿔서 무한이 저장할수 있게 변경
+        ArrayList<Integer> resultArray = new ArrayList<Integer>();
+
 
         Scanner sc = new Scanner(System.in);
 
@@ -44,21 +44,22 @@ public class APP {
                 default:
                     System.out.println("사칙연산 기호가 아닙니다.(+,-,*,/)");
             }
-
-            if (index == 10) {
-                for (int i = 0 ; i <9; i++){
-                    resultArray[i] = resultArray[i+1];
-                }
-                resultArray[9] = result;
-            } else {
-                resultArray[index++] = result;
+            
+            resultArray.add(result);
+            //remove문자열을 입력받으면 reultArray의 0번째 값을 삭제함
+            System.out.println("가장 먼저 연산 된 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+            String rmAnswer = sc.next();
+            if (rmAnswer.equals("remove")) {
+                resultArray.remove(0);
             }
-
+            //exit문자열을 입력받으면 while(1)루프를 빠져나옴
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             String answer = sc.next();
             if (answer.equals("exit")) {
                 break;
             }
+
+
 
         }
     }
