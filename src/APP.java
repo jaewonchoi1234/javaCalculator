@@ -44,13 +44,22 @@ public class APP {
                 default:
                     System.out.println("사칙연산 기호가 아닙니다.(+,-,*,/)");
             }
-            
+
             resultArray.add(result);
-            //remove문자열을 입력받으면 reultArray의 0번째 값을 삭제함
+            //remove문자열을 입력받으면 resultArray의 0번째 값을 삭제함
             System.out.println("가장 먼저 연산 된 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
             String rmAnswer = sc.next();
             if (rmAnswer.equals("remove")) {
                 resultArray.remove(0);
+            }
+            //inquiry문자열 입력받으면 저장된 연산결과를 조회함.
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+            String inquiryAnswer = sc.next();
+            if (inquiryAnswer.equals("inquiry")) {
+                int num = 1;
+                for(Integer i : resultArray) {
+                    System.out.println(num++ +"번째 결과값: "+i);
+                }
             }
             //exit문자열을 입력받으면 while(1)루프를 빠져나옴
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
