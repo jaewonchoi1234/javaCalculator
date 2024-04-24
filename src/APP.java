@@ -39,14 +39,21 @@ public class APP {
                     System.out.println("사칙연산 기호가 아닙니다.(+,-,*,/)");
             }
             System.out.println("결과: " + result);
-            resultArray[index++] = result;
+            if (index == 10) {
+                for (int i = 0 ; i <9; i++){
+                    resultArray[i] = resultArray[i+1];
+                }
+                resultArray[9] = result;
+            } else {
+                resultArray[index++] = result;
+            }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             String answer = sc.next();
             if (answer.equals("exit")) {
                 break;
             }
-
+            
         }
     }
 }
