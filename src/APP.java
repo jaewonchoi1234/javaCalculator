@@ -12,7 +12,7 @@ public class APP {
         System.out.print("사칙연산 기호를 입력하세요: ");
         char operator = sc.next().charAt(0);
 
-        System.out.println(firstInt+" "+operator+" "+secondInt);
         
+
     }
 }
