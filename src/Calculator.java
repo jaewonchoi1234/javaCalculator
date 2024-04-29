@@ -5,19 +5,21 @@ public class Calculator {
     private ArrayList<Double> resultList = new ArrayList<>();
 
     //Getter
-    public Double getter(int index){
-        return resultList.get(index);
-    }
-    public Double getter() {
-        return resultList.getLast();
+    public ArrayList<Double> getter(ArrayList<Double> list){
+        list.clear();
+        for(Double d : resultList){
+            list.add(d);
+        }
+        return list;
     }
 
     //Setter
-    public void setter(Double value){
-         resultList.add(value);
-    }
-    public void setter(int index,Double value){
-        resultList.set(index,value);
+    public void setter(ArrayList<Double> list){
+        resultList.clear();
+        for(Double d : list){
+            resultList.add(d);
+        }
+
     }
 
 
