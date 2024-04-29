@@ -2,7 +2,18 @@ import java.util.ArrayList;
 
 public class Calculator {
     //게산 결과 저장 할 ArrayList
-    private ArrayList<Double> resultList = new ArrayList<>();
+    private ArrayList<Double> resultList;
+
+    //생성자
+    public Calculator(ArrayList<Double> resultList) {
+        this.resultList = new ArrayList<>();
+        for (Double result : resultList){
+            this.resultList.add(result);
+        }
+    }
+    public Calculator() {
+        resultList = new ArrayList<>();
+    }
 
     //Getter
     public ArrayList<Double> getter(ArrayList<Double> list){

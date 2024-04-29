@@ -3,9 +3,14 @@ import java.util.*;
 
 public class APP {
     public static void main(String[] args) {
-        Calculator cal = new Calculator();
-        Scanner sc = new Scanner(System.in);
         ArrayList<Double> list = new ArrayList<>();
+        list.add(0.0);
+        list.add(1.0);
+        list.add(2.0);
+        //저장 된 컬렉션을 초기화
+        Calculator cal = new Calculator(list);
+        Scanner sc = new Scanner(System.in);
+
 
         while (true) {
             //첫번째 정수, 두번째 정수, 연산자 키보드에서 입력받기
@@ -24,7 +29,9 @@ public class APP {
                 double result = cal.calculate(firstInt, secondInt, operator);
 
                 System.out.println("결과: " + result);
-                ///컬렉션에 결과 값 저장
+                ///저장 된 컬렉션 가져와서 결과 추가 후 다시 저장
+                list.clear();
+                list=cal.getter(list);
                 list.add(result);
                 cal.setter(list);
             }
