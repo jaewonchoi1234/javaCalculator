@@ -51,12 +51,7 @@ public class APP {
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
             String inquiryAnswer = sc.next();
             if (inquiryAnswer.equals("inquiry")) {
-                int num = 1;
-                list = cal.getter(list);
-                for(Double i :list ) {
-                    //num번째 결과값 i를 보여주고 num을 +1
-                    System.out.println(num++ +"번째 결과: "+i);
-                }
+                cal.inquiryResults();
             }
             //exit문자열을 입력받으면 while(1)루프를 빠져나옴
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");

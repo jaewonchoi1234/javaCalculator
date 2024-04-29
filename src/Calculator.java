@@ -26,6 +26,13 @@ public class Calculator {
         resultList.removeFirst();
     }
 
+    //inquiry
+    public void inquiryResults() {
+        int number = 1;
+        for (Double d : resultList) {
+            System.out.println(number++ +"번째 결과: "+d);
+        }
+    }
     //사칙연산을 수행하고 값을 반환하는 메서드
     public double calculate (int firstNum,int secondNum,char operator) throws ArithmeticException, IllegalArgumentException {
         double result;
