@@ -2,7 +2,24 @@ import java.util.ArrayList;
 
 public class Calculator {
     //게산 결과 저장 할 ArrayList
-    ArrayList<Double> resultList = new ArrayList<>();
+    private ArrayList<Double> resultList = new ArrayList<>();
+
+    //Getter
+    public Double getter(int index){
+        return resultList.get(index);
+    }
+    public Double getter() {
+        return resultList.getLast();
+    }
+
+    //Setter
+    public void setter(Double value){
+         resultList.add(value);
+    }
+    public void setter(int index,Double value){
+        resultList.set(index,value);
+    }
+
 
     //사칙연산을 수행하고 값을 반환하는 메서드
     public double calculate (int firstNum,int secondNum,char operator) throws ArithmeticException, IllegalArgumentException {
