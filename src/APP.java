@@ -42,9 +42,7 @@ public class APP {
             String rmAnswer = sc.next();
             try {
                 if (rmAnswer.equals("remove")) {
-                    list = cal.getter(list);
-                    list.remove(0);
-                    cal.setter(list);
+                    cal.removeResult();
                 }
             } catch (IndexOutOfBoundsException e) {
                 System.out.println(e.getMessage());
