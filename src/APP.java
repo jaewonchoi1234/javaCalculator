@@ -3,8 +3,9 @@ import java.util.*;
 
 public class APP {
     public static void main(String[] args) {
-
-        Calculator cal = new Calculator();
+        Calculator cal;
+        Calculator circleCal = new CircleCalculator();
+        Calculator arithmeticCal = new ArithmeticCalculator();
         ArrayList<Double> list = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
 
@@ -14,6 +15,7 @@ public class APP {
             System.out.println("1.사칙연산 2.원 넑이 계산");
             char num = sc.next().charAt(0);
             if (num == '1') {
+                cal = arithmeticCal;
                 //첫번째 정수, 두번째 정수, 연산자 키보드에서 입력받기
                 System.out.print("첫 번째 숫자를 입력하세요: ");
                 int firstInt = sc.nextInt();
@@ -22,25 +24,19 @@ public class APP {
                 System.out.print("사칙연산 기호를 입력하세요: ");
                 char operator = sc.next().charAt(0);
 
-
-
                 //calculate 메서드에서 예외 발생 시 예외 처리로 예외 메시지 출력
                 try {
                     //Calculate 인스턴스의 calculate로 사칙연산 수행 후 반환
-                    double result = cal.calculate(firstInt, secondInt, operator);
+                    double result = ((ArithmeticCalculator)cal).calculate(firstInt, secondInt, operator);
 
                     System.out.println("결과: " + result);
                     ///저장 된 컬렉션 가져와서 결과 추가 후 다시 저장
                     list=cal.getter(list);
                     list.add(result);
                     cal.setter(list);
-                }
-                catch (ArithmeticException e)
-                {
+                } catch (ArithmeticException e) {
                     System.out.println(e.getMessage());
-                }
-                catch (IllegalArgumentException e)
-                {
+                } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
                 }
 
@@ -54,40 +50,40 @@ public class APP {
                 } catch (IndexOutOfBoundsException e) {
                     System.out.println(e.getMessage());
                 }
-                //inquiry문자열 입력받으면 저장된 연산결과를 조회함.
-                System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
-                String inquiryAnswer = sc.next();
-                if (inquiryAnswer.equals("inquiry")) {
-                    cal.inquiryResults();
-                }
 
             } else if (num == '2') {
+                cal = circleCal;
                 //반지름 입력
                 System.out.print("반지름을 입력하세요: ");
                 int radius = sc.nextInt();
                 //원 넓이 계산
-                double area = cal.calculateCircleArea(radius);
+                double area = ((CircleCalculator)cal).calculate(radius);
                 System.out.println("결과: " + area);
                 //원 넓이 저장
-                list=cal.cirGetter(list);
+                list=cal.getter(list);
                 list.add(area);
-                cal.cirSetter(list);
-                //원 넓이 조회
-                System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
-                String inquiryAnswer = sc.next();
-                if (inquiryAnswer.equals("inquiry")) {
-                    cal.cirInquiry();
-                }
+                cal.setter(list);
 
 
+            } else {
+                System.out.println("1또는 2를 입력하세요.");
+                continue;
             }
+
+
+            //inquiry문자열 입력받으면 저장된 연산결과를 조회함.
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+            String inquiryAnswer = sc.next();
+            if (inquiryAnswer.equals("inquiry")) {
+                cal.inquiryResults();
+            }
+
             //exit문자열을 입력받으면 while(1)루프를 빠져나옴
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             String answer = sc.next();
             if (answer.equals("exit")) {
                 break;
             }
-
 
 
         }
