@@ -4,8 +4,9 @@ import java.util.*;
 public class APP {
     public static void main(String[] args) {
         Calculator cal;
+        Calculator arithmeticCalculator = new ArithmeticCalculator();
         Calculator circleCal = new CircleCalculator();
-        Calculator arithmeticCal = new ArithmeticCalculator();
+        //getter setter 깊은 복사용
         ArrayList<Double> list = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
 
@@ -15,7 +16,8 @@ public class APP {
             System.out.println("1.사칙연산 2.원 넑이 계산");
             char num = sc.next().charAt(0);
             if (num == '1') {
-                cal = arithmeticCal;
+                //사칙연산 계산기로 초기화
+                cal = arithmeticCalculator;
                 //첫번째 정수, 두번째 정수, 연산자 키보드에서 입력받기
                 System.out.print("첫 번째 숫자를 입력하세요: ");
                 int firstInt = sc.nextInt();
@@ -26,9 +28,8 @@ public class APP {
 
                 //calculate 메서드에서 예외 발생 시 예외 처리로 예외 메시지 출력
                 try {
-                    //Calculate 인스턴스의 calculate로 사칙연산 수행 후 반환
+                    //Calculate 인스턴스의 calculate로 사칙연산 수행 후 반환\
                     double result = ((ArithmeticCalculator)cal).calculate(firstInt, secondInt, operator);
-
                     System.out.println("결과: " + result);
                     ///저장 된 컬렉션 가져와서 결과 추가 후 다시 저장
                     list=cal.getter(list);
@@ -36,8 +37,10 @@ public class APP {
                     cal.setter(list);
                 } catch (ArithmeticException e) {
                     System.out.println(e.getMessage());
+                    continue;
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
+                    continue;
                 }
 
                 //remove문자열을 입력받으면 저장한 결과의 0번째 값을 삭제함
@@ -52,6 +55,7 @@ public class APP {
                 }
 
             } else if (num == '2') {
+                //원 넓이 계산기로 바꿈
                 cal = circleCal;
                 //반지름 입력
                 System.out.print("반지름을 입력하세요: ");
@@ -69,7 +73,6 @@ public class APP {
                 System.out.println("1또는 2를 입력하세요.");
                 continue;
             }
-
 
             //inquiry문자열 입력받으면 저장된 연산결과를 조회함.
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");

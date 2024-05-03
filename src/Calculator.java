@@ -7,7 +7,7 @@ public abstract class Calculator {
 
     //생성자
     public Calculator() {
-        resultList = new ArrayList<>();
+        this.resultList = new ArrayList<>();
     }
 
     //Getter
@@ -17,6 +17,9 @@ public abstract class Calculator {
             list.add(d);
         }
         return list;
+    }
+    protected ArrayList<Double> getter(){
+        return resultList;
     }
 
     //Setter
@@ -32,11 +35,5 @@ public abstract class Calculator {
         resultList.removeFirst();
     }
     //inquiry
-    public void inquiryResults() {
-        int number = 1;
-        System.out.println("[사칙연산 결과 리스트]");
-        for (Double d : resultList) {
-            System.out.println(number++ +"번째 결과: "+d);
-        }
-    }
+    abstract void inquiryResults();
 }
