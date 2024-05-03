@@ -12,7 +12,6 @@ public abstract class Calculator {
 
     //Getter
     public ArrayList<Double> getter(ArrayList<Double> list){
-        list.clear();
         for(Double d : resultList){
             list.add(d);
         }
@@ -28,7 +27,6 @@ public abstract class Calculator {
         for(Double d : list){
             resultList.add(d);
         }
-        list.clear();
     }
     //remover
     public void removeResult(){
