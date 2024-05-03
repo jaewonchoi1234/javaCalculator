@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
-public class ArithmeticCalculator extends Calculator {
+public class ArithmeticCalculator<T extends Number> extends Calculator {
 
 
-    public double calculate (int firstNum,int secondNum,char operator) throws ArithmeticException, IllegalArgumentException {
+    public double calculate (T firstNum,T secondNum,char operator) throws ArithmeticException, IllegalArgumentException {
         return operatorFactory(operator).operate(firstNum,secondNum);
     }
 

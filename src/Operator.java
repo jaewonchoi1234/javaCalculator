@@ -1,3 +1,3 @@
-public interface Operator {
-    double operate(int a, int b);
+public interface Operator<T extends Number> {
+    double operate(T a, T b);
 }
